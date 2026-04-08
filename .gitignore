@@ -1,0 +1,17 @@
+# Ignore these large/local items
+node_modules/
+storage/
+package-lock.json
+package.json
+termux*
+
+# Ignore all hidden files by default
+.*
+
+# wa-bot specific
+auth_session
+
+# EXCEPTION: Do NOT ignore these specific dotfiles
+!.gitignore
+!.zshrc
+!.zsh_history
