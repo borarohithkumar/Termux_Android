@@ -15,14 +15,12 @@ class ItemIDList {
 			boolean match = false;
 			for(String i : inArr) {
 				if (i.contains(code1 + code2)) {
+					outQueue.offer(code1 + code2);
 					match = true;
 					break;
 				}
 			}
-			if (match) {
-				outQueue.offer(code1 + code2);
-			}
-			else {
+			if (!match) {
 				tempData.add(code1);
 			}
 		}

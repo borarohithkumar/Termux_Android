@@ -118,10 +118,10 @@ source $ZSH/oh-my-zsh.sh
 HISTFILE=$HOME/.zsh_history
 
 # Number of commands kept in memory during a session
-HISTSIZE=25000
+HISTSIZE=100000
 
 # Number of commands saved to the history file
-SAVEHIST=100000
+SAVEHIST=400000
 
 # ---- History Behavior Options ----
 
@@ -184,5 +184,14 @@ alias tgul='python ~/tg.py up'
 alias tgdl='python ~/tg.py dl'
 alias tgls='python ~/tg.py ls'
 
-compdef _gnu_generic zstd steghide
+compdef _gnu_generic zstd steghide qpdf
 export PATH="$HOME/.cargo/bin:$PATH"
+export TMPDIR=$PREFIX/tmp
+export XDG_RUNTIME_DIR="$PREFIX/tmp"
+export SSL_CERT_FILE="$PREFIX/etc/tls/cert.pem"
+export SSL_CERT_DIR="$PREFIX/etc/tls/certs"
+
+# Ensure DNS resolver config for glibc binary exists
+if [ ! -s /sdcard/res.conf ]; then
+  printf "nameserver 8.8.8.8\nnameserver 1.1.1.1\n" > /sdcard/res.conf 2>/dev/null
+fi

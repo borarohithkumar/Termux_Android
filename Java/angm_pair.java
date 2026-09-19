@@ -1,7 +1,7 @@
 class AngmPair {
 	public static String isAngm(String str1, String str2) {
 		if (str1.length() != str2.length()) {
-			return "Not an Anagram";
+			return "Not Anagram";
 		}
 		int freq[] = new int[256];
 		for(int i = 0; i < str1.length(); i++) {
@@ -10,11 +10,10 @@ class AngmPair {
 		}
 		for(int i : freq) {
 			if (i > 0) {
-				return "Not an Anagram";
+				return "Not Anagram";
 			}
-			return "Anagram";
 		}
-		return "Not an Anagram";
+		return "Anagram";
 	}
 	public static void main(String args[]) {
 		String arr[][] = {
