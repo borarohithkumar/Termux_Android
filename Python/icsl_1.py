@@ -1,24 +1,23 @@
 # import heapq
-
-P = 6
-D = 2
-T = [7, 10]
-
-# pq = [(i, i) for i in T]
-# for _ in range(P - 1):
-#     time_taken, interval = heapq.heappop(pq)
-#     heapq.heappush(pq, (time_taken + interval, interval))
-# print(heapq.heappop(pq)[0])
-
-l = 1
-h = min(T) * P
-total_time = h
+People = 10 ** 9
+Desks = 2
+Time = [7, 10]
+# pq = [(t, t) for t in Time]
+# heapq.heapify(pq)
+# for i in range(People - 1):
+#     finish_time, process_time = heapq.heappop(pq)
+#     heapq.heappush(pq, (finish_time + process_time, process_time))
+# print(pq[0][0])
+l, h = min(Time), min(Time) * People
+total = l
 while l <= h:
     m = (l + h) // 2
-    ps_in_time = sum(m // t for t in T)
-    if ps_in_time >= P:
-        total_time = m
+    process_time = 0
+    for t in Time:
+        process_time += m // t
+    if process_time >= People:
+        total = m
         h = m - 1
     else:
         l = m + 1
-print(total_time)
+print(total)

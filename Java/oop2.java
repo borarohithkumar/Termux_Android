@@ -92,6 +92,7 @@ class CarRental extends VehicleRental {
 		int rentPerDay = CarDetails.identifyPerDayRent(this.carType);
 		int excessKms = this.identifyJourneyDays();
 		int journeyDays = this.getJourneyDays();
+		System.out.println("Gayatri");
 		if (rentPerDay <= 0 || excessKms < 0 || journeyDays < 0){
 			return -1.0;
 		}
@@ -119,13 +120,14 @@ class CarDetails {
 
     //To_Trainee
     public static int identifyPerDayRent(String carType) {
-        int rentPerDay = 0;
+        int rentPerDay = -1;
 		for(int i = 0; i < carTypesArr.length; i++){
 			if (carTypesArr[i].equalsIgnoreCase(carType)){
-				return perDayRentsArr[i];
+				rentPerDay = perDayRentsArr[i];
+				break;
 			}
 		}
-        return -1;
+        return rentPerDay;
     }
 }
 
