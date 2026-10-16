@@ -61,6 +61,7 @@ require("lazy").setup({
         "python",
         "markdown",
         "java",
+		"sql",
       })
 
       vim.api.nvim_create_autocmd("FileType", {
@@ -83,14 +84,14 @@ require("lazy").setup({
     config = function()
       require("mason").setup()
       require("mason-lspconfig").setup({
-        ensure_installed = { "pyright", "ts_ls", "html", "cssls", "jdtls" },
+        ensure_installed = { "pyright", "ts_ls", "html", "cssls", "jdtls", "sqls" },
         automatic_enable = false,
       })
 
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-      -- Standard Web & Python Servers
-      local servers = { "pyright", "ts_ls", "html", "cssls" }
+      -- Standard Web & Python Servers + SQL
+      local servers = { "pyright", "ts_ls", "html", "cssls", "sqls" }
       for _, server in ipairs(servers) do
         vim.lsp.config[server] = {
           capabilities = capabilities,
@@ -132,7 +133,8 @@ require("lazy").setup({
         single_file_support = true,
       }
 
-      vim.lsp.enable({ "pyright", "ts_ls", "html", "cssls", "lua_ls", "jdtls" })
+      -- Enable all servers including sqls
+      vim.lsp.enable({ "pyright", "ts_ls", "html", "cssls", "lua_ls", "jdtls", "sqls" })
     end,
   },
 
@@ -144,6 +146,7 @@ require("lazy").setup({
       require("conform").setup({
         formatters_by_ft = {
           lua = { "stylua" },
+		  sql = { "sql_formatter" },
           python = { "isort", "black" },
           javascript = { "prettier" },
           typescript = { "prettier" },

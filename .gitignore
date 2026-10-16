@@ -1,12 +1,17 @@
 # Ignore these large/local items
+demo.java
 node_modules/
 storage/
 package-lock.json
 package.json
 termux*
+go/
 
 # Ignore all hidden files by default
 .*
+
+# aws backup specific
+*.tar.gz
 
 # wa-bot specific
 auth_session
