@@ -4,10 +4,8 @@ class RevStr {
 		char temp;
         while (i < f) {
             temp = arr[i];
-            arr[i] = arr[f];
-            arr[f] = temp;
-            i++;
-            f--;
+            arr[i++] = arr[f];
+            arr[f--] = temp;
         }
     }
 	public static void main(String[] args) {
@@ -18,21 +16,18 @@ class RevStr {
         int w = 0;
         while (r < arr.length) {
             while (r < arr.length && arr[r] == ' ') {
-                r++;
-            }
+				r++;
+			}
             if (w > 0 && r < arr.length) {
-                arr[w] = ' ';
-                w++;
-            }
+				arr[w++] = ' ';
+			}
             while (r < arr.length && arr[r] != ' ') {
-                arr[w] = arr[r];
-                w++;
-                r++;
-            }
+				arr[w++] = arr[r++];
+			}
         }
         rev(0, w - 1, arr);
         int st = 0;
-        for (int p = 0; p < w + 1; p++) {
+        for (int p = 0; p <= w; p++) {
             if (p == w || arr[p] == ' ') {
                 rev(st, p - 1, arr);
                 st = p + 1;
